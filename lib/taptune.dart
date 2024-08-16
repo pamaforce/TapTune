@@ -41,6 +41,10 @@ class TapTuneSDK {
         String param = response['outputs']['param'];
         if (param.startsWith('[') && param.endsWith(']')) {
           param = param.substring(1, param.length - 1); // 去除首尾的中括号
+          // 将字符串拆分为列表
+          List<String> parts = param.split(',');
+          // 去除每个元素的首尾空格并获取最后一个元素
+          param = parts.last.trim();
         }
         final result = {
           'id': response['outputs']['id'],
@@ -95,13 +99,10 @@ class ApiClient {
   ApiClient();
 
   Future<Map<String, dynamic>> getDatasets() async {
-    final url = Uri.parse('https://api.dify.ai/v1/datasets?page=1&limit=20');
+    final url = Uri.parse('http://123.249.92.54:5700/v1/datasets?page=1&limit=20');
     final response = await http.get(
       url,
-      headers: {
-        // TODO: 迁移到服务端
-        'Authorization': 'Bearer dataset-Ase7Y8DW4gZMVT5vE5LgEEcf',
-      },
+      headers: {},
     );
 
     if (response.statusCode == 200) {
@@ -112,14 +113,10 @@ class ApiClient {
   }
 
   Future<Map<String, dynamic>> runWorkflow({required String query, required String appID}) async {
-    final url = Uri.parse('https://api.dify.ai/v1/workflows/run');
+    final url = Uri.parse('http://123.249.92.54:5700/v1/workflows/run');
     final response = await http.post(
       url,
-      headers: {
-        // TODO: 迁移到服务端
-        'Authorization': 'Bearer app-Q2PXbv1jzUaUEJRSmNqh2nMz',
-        'Content-Type': 'application/json',
-      },
+      headers: {},
       body: jsonEncode({
         "inputs": {"query": query, "appid": appID},
         "response_mode": "blocking",
