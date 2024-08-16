@@ -1,6 +1,6 @@
 name: taptune
 description: "一个基于大模型工作流实现的智能设置助手 TapTuneSDK，可以根据用户的需求从配置的所有设置项中快速选择正确的设置。"
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/pamaforce/TapTuneSDK
 repository: https://github.com/pamaforce/TapTuneSDK
 issue_tracker: https://github.com/pamaforce/TapTuneSDK/issues

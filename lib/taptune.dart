@@ -116,7 +116,9 @@ class ApiClient {
     final url = Uri.parse('http://123.249.92.54:5700/v1/workflows/run');
     final response = await http.post(
       url,
-      headers: {},
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: jsonEncode({
         "inputs": {"query": query, "appid": appID},
         "response_mode": "blocking",
